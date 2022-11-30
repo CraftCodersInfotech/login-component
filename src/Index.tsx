@@ -3,6 +3,7 @@ import React from "react";
 import { styles } from "./Style";
 import InputField from "react-native-input-Field";
 import Button from "react-native-button";
+import { String } from "./constants/String";
 
 const Login = () => {
   return (
@@ -11,15 +12,15 @@ const Login = () => {
         source={require("../src/assets/image1.png")}
         style={styles.image}
       />
-      <Text style={styles.mainTitle}>Login to Continue</Text>
-      <Text style={styles.inputTitle}>Mobile Number</Text>
+      <Text style={styles.mainTitle}>{String.loginLabel}</Text>
+      <Text style={styles.inputTitle}>{String.moblieNum}</Text>
       <InputField
         placeholder="Enter Mobile Number"
         width={"100%"}
         borderWidth={0.2}
         keyboardType={"numeric"}
       />
-      <Text style={styles.inputTitle}>Password</Text>
+      <Text style={styles.inputTitle}>{String.password}</Text>
       <InputField
         placeholder="Enter Password"
         width={"100%"}
@@ -27,18 +28,20 @@ const Login = () => {
         showIcon
       />
       <TouchableOpacity>
-        <Text style={styles.forgotText}>Forgot Password?</Text>
+        <Text style={styles.forgotText}>{String.forgotpassword}</Text>
       </TouchableOpacity>
 
       <Button
-        onPress={() => console.log("Pressed!")}
         title={"Login"}
-        width={340}
-        height={40}
-        borderRadius={5}
+        containerStyle={{
+          height: 40,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        textStyle={{ fontSize: 16, color: "white", fontWeight: "bold" }}
         backgroundColor={"#5625CC"}
-        fontSize={18}
-        fontWeight={"500"}
+        activeBackgroundColor={"#7f52e9"}
+        onPress={() => {}}
       />
 
       <View
@@ -58,11 +61,10 @@ const Login = () => {
       </View>
       <View style={{ flexDirection: "row", justifyContent: "center" }}>
         <Text style={{ fontSize: 18, fontWeight: "400" }}>
-          Don't have an account?
+          {String.textLabel}
         </Text>
         <Text style={{ fontSize: 18, color: "#5625CC", fontWeight: "600" }}>
-          {" "}
-          Register
+          {String.register}
         </Text>
       </View>
     </View>
