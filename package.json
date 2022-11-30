@@ -14,7 +14,7 @@
     "react-native": "^0.70.6"
   },
   "dependencies": {
-    "react-native-button": "^3.0.1",
-    "react-native-input-field": "github:CraftCodersInfotech/input-field-component"
+    "react-native-button": "https://github.com/CraftCodersInfotech/button-component.git",
+    "react-native-input-field": "https://github.com/CraftCodersInfotech/input-field-component.git"
   }
 }
