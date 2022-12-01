@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { styles } from "./Style";
-import InputField from "react-native-input-Field";
+import InputField from "react-native-input-field";
 import Button from "react-native-button";
 import { String } from "./constants/String";
 
@@ -15,22 +15,33 @@ const Login = () => {
       <Text style={styles.mainTitle}>{String.loginLabel}</Text>
       <Text style={styles.inputTitle}>{String.moblieNum}</Text>
       <InputField
+        containerStyle={{
+          height: 40,
+          width: "100%",
+          borderWidth: 1,
+          paddingHorizontal: 5,
+        }}
         placeholder="Enter Mobile Number"
-        width={"100%"}
-        borderWidth={0.2}
         keyboardType={"numeric"}
+        inputStyle={{}}
       />
       <Text style={styles.inputTitle}>{String.password}</Text>
       <InputField
+        containerStyle={{
+          height: 40,
+          width: "100%",
+          borderWidth: 1,
+          justifyContent: "space-between",
+          alignItems: "center",
+          paddingHorizontal: 5,
+        }}
         placeholder="Enter Password"
-        width={"100%"}
-        borderWidth={0.2}
         showIcon
+        inputStyle={{ width: "90%" }}
       />
       <TouchableOpacity>
         <Text style={styles.forgotText}>{String.forgotpassword}</Text>
       </TouchableOpacity>
-
       <Button
         title={"Login"}
         containerStyle={{
@@ -43,7 +54,6 @@ const Login = () => {
         activeBackgroundColor={"#7f52e9"}
         onPress={() => {}}
       />
-
       <View
         style={{
           flexDirection: "row",
