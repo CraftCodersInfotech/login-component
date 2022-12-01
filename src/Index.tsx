@@ -1,11 +1,28 @@
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { styles } from "./Style";
 import InputField from "react-native-input-field";
 import Button from "react-native-button";
 import { String } from "./constants/String";
-
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 const Login = () => {
+  let schema = yup.object().shape({
+    mobilenumber: yup.number().required().max(10),
+    password: yup.string().required(),
+  });
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    mode: "all",
+    resolver: yupResolver(schema),
+  });
+  const submit = () => {
+    console.log("error", errors);
+  };
   return (
     <View style={{ flex: 1, paddingHorizontal: 20 }}>
       <Image
@@ -15,6 +32,8 @@ const Login = () => {
       <Text style={styles.mainTitle}>{String.loginLabel}</Text>
       <Text style={styles.inputTitle}>{String.moblieNum}</Text>
       <InputField
+        name="mobilenumber"
+        control={control}
         containerStyle={{
           height: 40,
           width: "100%",
@@ -22,11 +41,16 @@ const Login = () => {
           paddingHorizontal: 5,
         }}
         placeholder="Enter Mobile Number"
+        maxLength={10}
         keyboardType={"numeric"}
         inputStyle={{ width: "100%" }}
+        errors={errors}
       />
+
       <Text style={styles.inputTitle}>{String.password}</Text>
       <InputField
+        name="password"
+        control={control}
         containerStyle={{
           height: 40,
           width: "100%",
@@ -38,7 +62,9 @@ const Login = () => {
         placeholder="Enter Password"
         showIcon
         inputStyle={{ width: "90%" }}
+        errors={errors}
       />
+
       <TouchableOpacity>
         <Text style={styles.forgotText}>{String.forgotpassword}</Text>
       </TouchableOpacity>
@@ -52,7 +78,7 @@ const Login = () => {
         textStyle={{ fontSize: 16, color: "white", fontWeight: "bold" }}
         backgroundColor={"#5625CC"}
         activeBackgroundColor={"#7f52e9"}
-        onPress={() => {}}
+        onPress={handleSubmit(submit)}
       />
       <View
         style={{
@@ -80,5 +106,4 @@ const Login = () => {
     </View>
   );
 };
-
 export default Login;
