@@ -18,7 +18,10 @@
     "react-native-input-field": "github:CraftCodersInfotech/input-field-component"
   },
   "devDependencies": {
+    "@hookform/resolvers": "^2.9.10",
     "@types/react": "^18.0.25",
-    "@types/react-native": "^0.70.7"
+    "@types/react-native": "^0.70.7",
+    "react-hook-form": "^7.40.0",
+    "yup": "^0.32.11"
   }
 }
