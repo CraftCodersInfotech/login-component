@@ -23,7 +23,7 @@ const Login = () => {
         }}
         placeholder="Enter Mobile Number"
         keyboardType={"numeric"}
-        inputStyle={{}}
+        inputStyle={{ width: "100%" }}
       />
       <Text style={styles.inputTitle}>{String.password}</Text>
       <InputField
