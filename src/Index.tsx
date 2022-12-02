@@ -37,7 +37,7 @@ const Login = () => {
     console.log("error", errors);
   };
   return (
-    <View style={{ flex: 1, paddingHorizontal: 20 }}>
+    <View style={styles.mainView}>
       <Image
         source={require("../src/assets/image1.png")}
         style={styles.image}
@@ -47,13 +47,8 @@ const Login = () => {
       <InputField
         name="mobilenumber"
         control={control}
-        containerStyle={{
-          height: 40,
-          width: "100%",
-          borderWidth: 1,
-          paddingHorizontal: 5,
-        }}
-        placeholder="Enter Mobile Number"
+        containerStyle={styles.containermobile}
+        placeholder="Enter mobile number"
         maxLength={10}
         keyboardType={"numeric"}
         inputStyle={{ width: "100%" }}
@@ -64,14 +59,7 @@ const Login = () => {
       <InputField
         name="password"
         control={control}
-        containerStyle={{
-          height: 40,
-          width: "100%",
-          borderWidth: 1,
-          justifyContent: "space-between",
-          alignItems: "center",
-          paddingHorizontal: 5,
-        }}
+        containerStyle={styles.containerpassword}
         placeholder="Enter Password"
         showIcon
         inputStyle={{ width: "90%" }}
@@ -83,38 +71,20 @@ const Login = () => {
       </TouchableOpacity>
       <Button
         title={"Login"}
-        containerStyle={{
-          height: 40,
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-        textStyle={{ fontSize: 16, color: "white", fontWeight: "bold" }}
+        containerStyle={styles.Button}
+        textStyle={styles.loginText}
         backgroundColor={"#5625CC"}
         activeBackgroundColor={"#7f52e9"}
         onPress={handleSubmit(submit)}
       />
-      <View
-        style={{
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <View
-          style={{ borderBottomWidth: 1, width: "35%", marginVertical: 20 }}
-        />
+      <View style={styles.orMain}>
+        <View style={styles.orLine} />
         <Text style={{ paddingHorizontal: 10 }}>or </Text>
-        <View
-          style={{ borderBottomWidth: 1, width: "35%", marginVertical: 20 }}
-        />
+        <View style={styles.orLine} />
       </View>
-      <View style={{ flexDirection: "row", justifyContent: "center" }}>
-        <Text style={{ fontSize: 18, fontWeight: "400" }}>
-          {String.textLabel}
-        </Text>
-        <Text style={{ fontSize: 18, color: "#5625CC", fontWeight: "600" }}>
-          {String.register}
-        </Text>
+      <View style={styles.footerText}>
+        <Text style={styles.textLabel}>{String.textLabel}</Text>
+        <Text style={styles.register}>{String.register}</Text>
       </View>
     </View>
   );
