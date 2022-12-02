@@ -9,8 +9,21 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 const Login = () => {
   let schema = yup.object().shape({
-    mobilenumber: yup.number().required().max(10),
-    password: yup.string().required(),
+    mobilenumber: yup.string().required().min(10),
+    password: yup
+      .string()
+      .required()
+      .test(
+        "regex",
+        "Password must be min 8 characters, and have 1 Special Character, 1 Uppercase, 1 Number and 1 Lowercase",
+        (val) => {
+          let regExp = new RegExp(
+            "^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$"
+          );
+          // console.log(regExp.test(val), regExp, val);
+          return regExp.test(val);
+        }
+      ),
   });
   const {
     control,
