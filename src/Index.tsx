@@ -119,28 +119,6 @@ const Login = (props: ILoginProps) => {
           </>
         }
       />
-      {/* <Text style={styles.inputTitle}>{String.moblieNum}</Text>
-      <InputField
-        name="mobilenumber"
-        control={control}
-        containerStyle={styles.containermobile}
-        placeholder="Enter mobile number"
-        maxLength={10}
-        keyboardType={"numeric"}
-        inputStyle={{ width: "100%" }}
-        errors={errors}
-        />
-
-      <Text style={styles.inputTitle}>{String.password}</Text>
-      <InputField
-        name="password"
-        control={control}
-        containerStyle={styles.containerpassword}
-        placeholder="Enter Password"
-        showIcon
-        inputStyle={{ width: "90%" }}
-        errors={errors}
-        /> */}
     </View>
   );
 };
