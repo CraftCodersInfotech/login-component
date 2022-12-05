@@ -23,39 +23,8 @@ Make sure to install pod into react-native Project after linking given command
 
 ### Login
 
-| Name       | Type  | Description         |
-| ---------- | ----- | ------------------- |
-| InputField | props | props of InputField |
-| Button     | props | props of Button     |
+| Name | Type  | Description          |
+| ---- | ----- | -------------------- |
+| data | props | props to render data |
 
-- Example
-
-```javascript
-import Login from "react-native-login";
-import InputField from "react-native-input-Field";
-import Button from "react-native-button";
-const App = () => {
-  return (
-        <Image
-        source={require("../src/assets/image1.png")}
-        style={styles.image}
-      />
-      <InputField
-        placeholder="Enter Mobile Number"
-        width={"100%"}
-        borderWidth={0.2}
-        keyboardType={"numeric"}
-      />
-      <Button
-        onPress={() => console.log("Pressed!")}
-        title={"Login"}
-        width={340}
-        height={40}
-        borderRadius={5}
-        backgroundColor={"#5625CC"}
-        fontSize={18}
-        fontWeight={"500"}
-      />
-  );
-};
-```
+![login](https://user-images.githubusercontent.com/24438876/205597182-20924c5e-0db0-40d3-97a5-4a8f293a69b7.png)
