@@ -88,7 +88,7 @@ const Login = (props: ILoginProps) => {
         ListHeaderComponent={
           <>
             <Image
-              source={require("../src/assets/image1.png")}
+              source={require("../src/assets/CraftCoders.png")}
               style={styles.image}
             />
             <Text style={styles.mainTitle}>{String.loginLabel}</Text>
