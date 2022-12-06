@@ -2,12 +2,11 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   mainView: { flex: 1, paddingHorizontal: 20 },
-  image: { height: 180, width: 350, resizeMode: "stretch" },
+  image: { height: "85%", width: "100%", resizeMode: "stretch" },
   mainTitle: {
     fontSize: 22,
     fontWeight: "bold",
     color: "#072450",
-    marginBottom: 10,
   },
   inputTitle: {
     fontSize: 14,
