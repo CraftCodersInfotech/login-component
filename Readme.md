@@ -27,4 +27,5 @@ Make sure to install pod into react-native Project after linking given command
 | ---- | ----- | -------------------- |
 | data | props | props to render data |
 
-![login](https://user-images.githubusercontent.com/24438876/205597182-20924c5e-0db0-40d3-97a5-4a8f293a69b7.png)
+![Screenshot 2022-12-06 at 5 33 52 PM](https://user-images.githubusercontent.com/24438876/205907066-d81db9cf-73fb-4621-a294-64bcdc71c6ee.png)
+![Screenshot 2022-12-06 at 5 34 29 PM](https://user-images.githubusercontent.com/24438876/205907330-69b1023d-508e-43cd-b6f6-b7ae2251ccfb.png)
