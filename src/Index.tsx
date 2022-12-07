@@ -15,6 +15,7 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { LoginContext } from "./Context";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 interface InputData {
   name: string;
