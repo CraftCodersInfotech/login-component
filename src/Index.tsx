@@ -31,29 +31,29 @@ interface InputData {
 
 export interface ILoginProps {
   data: InputData[];
-  ShowLabel?: boolean;
   source?: ImageSourcePropType;
   imageStyle?: StyleProp<ImageStyle>;
   title?: string;
   titleStyle?: StyleProp<TextStyle>;
-  forgotLabel?: string;
-  forgotStyle?: StyleProp<TextStyle>;
-  buttonContainer?: StyleProp<ViewStyle>;
-  buttonText?: StyleProp<TextStyle>;
+  ShowLabel?: boolean;
   inputLabelStyle?: StyleProp<TextStyle>;
   inputContainer?: StyleProp<ViewStyle>;
   maxLength?: number;
+  buttonContainer?: StyleProp<ViewStyle>;
+  buttonText?: StyleProp<TextStyle>;
   backgroundColor?: string;
   activeBackgroundColor?: string;
-  opacity?: number;
-  orLineView?: StyleProp<ViewStyle>;
   orText?: string;
+  orLineView?: StyleProp<ViewStyle>;
+  opacity?: number;
   paddingHorizontalorText?: number;
   footerText?: string;
   footerTextStyle?: StyleProp<TextStyle>;
   footerTouchableTextStyle?: StyleProp<TextStyle>;
   footerTouchableText?: string;
   registerPress?: () => void;
+  forgotLabel?: string;
+  forgotStyle?: StyleProp<TextStyle>;
   forgotPress?: () => void;
 }
 
@@ -80,29 +80,29 @@ const Login = (props: ILoginProps) => {
       ),
   });
   const {
-    ShowLabel, // To show the label upon input-field
     source, // path of image
     imageStyle, // prop to give style to image
     title, // heading under the image
     titleStyle, // prop to give style to heading under the image
-    forgotLabel, // add text for "forgot password?"
-    forgotStyle, // prop to style the text "forgot password?"
-    buttonContainer, // prop to style the "login" button
-    buttonText, // add text in place of "login"
+    ShowLabel, // To show the label upon input-field
     inputLabelStyle, //prop to style  the label upon input-field
     inputContainer, //prop to style  the input-field
     maxLength, // add to allow user enter limited data
+    buttonContainer, // prop to style the "login" button
+    buttonText, // add text in place of "login"
     backgroundColor, //inactive color of "login" button
     activeBackgroundColor, //active color of "login" button
-    opacity, //to give opacity to "or" view
-    orLineView, //prop to give style to line "or"
     orText, //add text in-place of "or"
+    orLineView, //prop to give style to line "or"
+    opacity, //to give opacity to "or" view
     paddingHorizontalorText, //to leave space between "or"
     footerText, // add text in-place of "Don't have an account? "
-    footerTextStyle, //prop to give style to  "Don't have an account? "
-    footerTouchableTextStyle, //add text in-place of "REGISTER"
-    footerTouchableText, //prop to give style to  "REGISTER"
+    footerTextStyle, //prop to give style to  "Don't have an account?"
+    footerTouchableTextStyle, //prop to give style to  "REGISTER"
+    footerTouchableText, //add text in-place of "REGISTER "
     registerPress, //onPress for "REGISTER" text
+    forgotLabel, // add text for "forgot password?"
+    forgotStyle, // prop to style the text "forgot password?"
     forgotPress, //onPress for "Forget password" text
   } = props;
   const {registerUser, userData} = useContext(LoginContext);
