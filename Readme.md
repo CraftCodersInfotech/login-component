@@ -35,7 +35,8 @@ Make sure to install pod into react-native Project after linking given command
 | inputContainer | props | Prop to style  the input-field |
 | maxLength | number | Add to allow user enter limited data |
 | buttonContainer | StyleProp<ViewStyle> | Prop to style the "login" button |
-| buttonText | StyleProp<TextStyle> | Add text in place of "login" |
+| buttonText | StyleProp<ViewStyle> | Prop to style the "login" button |
+| buttonTextStyle | string | Add text in-place of "login" |
 | backgroundColor | string | Inactive color of "login" button |
 | activeBackgroundColor | string | Active color of "login" button |
 | orText | string | Add text in-place of "or" |

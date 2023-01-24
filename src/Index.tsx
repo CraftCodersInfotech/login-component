@@ -40,7 +40,8 @@ export interface ILoginProps {
   inputContainer?: StyleProp<ViewStyle>;
   maxLength?: number;
   buttonContainer?: StyleProp<ViewStyle>;
-  buttonText?: StyleProp<TextStyle>;
+  buttonText?: string;
+  buttonTextStyle?: StyleProp<TextStyle>;
   backgroundColor?: string;
   activeBackgroundColor?: string;
   orText?: string;
@@ -89,7 +90,8 @@ const Login = (props: ILoginProps) => {
     inputContainer, //prop to style  the input-field
     maxLength, // add to allow user enter limited data
     buttonContainer, // prop to style the "login" button
-    buttonText, // add text in place of "login"
+    buttonText, // Add text in-place of "login"
+    buttonTextStyle, // add text in place of "login"
     backgroundColor, //inactive color of "login" button
     activeBackgroundColor, //active color of "login" button
     orText, //add text in-place of "or"
@@ -144,7 +146,6 @@ const Login = (props: ILoginProps) => {
               keyboardType={item.keyboardType}
               inputStyle={{
                 width: item.showIcon ? '90%' : '100%',
-                // backgroundColor: 'red',
               }}
               errors={errors}
             />
@@ -159,9 +160,9 @@ const Login = (props: ILoginProps) => {
         ListFooterComponent={
           <>
             <Button
-              title={'Login'}
+              title={buttonText}
               containerStyle={buttonContainer}
-              textStyle={buttonText}
+              textStyle={buttonTextStyle}
               backgroundColor={backgroundColor}
               activeBackgroundColor={activeBackgroundColor}
               onPress={handleSubmit(submit)}
