@@ -11,7 +11,7 @@ import {
   ImageStyle,
   TextStyle,
 } from 'react-native';
-import React, { useContext, useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {styles} from './Style';
 import InputField from 'react-native-input-field';
 import Button from 'react-native-button';
@@ -27,6 +27,8 @@ interface InputData {
   inputType?: string;
   keyboardType?: KeyboardType | undefined;
   showIcon?: boolean;
+  showLogo?: boolean;
+  image?: ImageSourcePropType;
 }
 
 export interface ILoginProps {
@@ -42,7 +44,7 @@ export interface ILoginProps {
   buttonContainer?: StyleProp<ViewStyle>;
   buttonText?: string;
   buttonTextStyle?: StyleProp<TextStyle>;
-  onLoginPress?:any;
+  onLoginPress?: any;
   backgroundColor?: string;
   activeBackgroundColor?: string;
   orText?: string;
@@ -57,7 +59,11 @@ export interface ILoginProps {
   forgotLabel?: string;
   forgotStyle?: StyleProp<TextStyle>;
   forgotPress?: () => void;
-  children?:React.ReactNode;
+  children?: React.ReactNode;
+  iconStyle?: StyleProp<ImageStyle>;
+  passwordIconStyle?: StyleProp<ImageStyle>;
+  placeholderTextColor?: string;
+  scrollEnabled?:boolean
 }
 
 const Login = (props: ILoginProps) => {
@@ -94,7 +100,7 @@ const Login = (props: ILoginProps) => {
     buttonContainer, // prop to style the "login" button
     buttonText, // Add text in-place of "login"
     buttonTextStyle, // add text in place of "login"
-    onLoginPress,//onpress for button
+    onLoginPress, //onpress for button
     backgroundColor, //inactive color of "login" button
     activeBackgroundColor, //active color of "login" button
     orText, //add text in-place of "or"
@@ -110,6 +116,10 @@ const Login = (props: ILoginProps) => {
     forgotStyle, // prop to style the text "forgot password?"
     forgotPress, //onPress for "Forget password" text
     children, //User can add view or text
+    iconStyle,
+    passwordIconStyle,
+    placeholderTextColor,
+    scrollEnabled,
   } = props;
   const {registerUser, userData} = useContext(LoginContext);
   const {
@@ -121,8 +131,8 @@ const Login = (props: ILoginProps) => {
     mode: 'all',
     resolver: yupResolver(schema),
   });
-  const submit = (data) => {
-    onLoginPress(data)
+  const submit = (data: any) => {
+    onLoginPress(data);
     console.log('data:: ', data);
   };
 
@@ -138,10 +148,16 @@ const Login = (props: ILoginProps) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         data={props.data}
+        scrollEnabled={scrollEnabled}
         renderItem={({item}) => (
           <View>
             {ShowLabel && <Text style={inputLabelStyle}>{item.Label}</Text>}
             <InputField
+              passwordIconStyle={passwordIconStyle}
+              placeholderTextColor={placeholderTextColor}
+              iconStyle={iconStyle}
+              showLogo={item.showLogo}
+              source={item.image}
               showIcon={item.showIcon}
               name={item.name}
               control={control}
@@ -150,7 +166,7 @@ const Login = (props: ILoginProps) => {
               maxLength={maxLength}
               keyboardType={item.keyboardType}
               inputStyle={{
-                width: item.showIcon ? '90%' : '100%',
+                width: item.showIcon ? '80%' : '100%',
               }}
               errors={errors}
             />
@@ -172,27 +188,29 @@ const Login = (props: ILoginProps) => {
               activeBackgroundColor={activeBackgroundColor}
               onPress={handleSubmit(submit)}
             />
-            {orText && <View style={[styles.orMain, orLineContainer]}>
-              <View style={orLineView} />
-              <Text style={{paddingHorizontal: paddingHorizontalorText}}>
-                {orText}
-              </Text>
-              <View style={orLineView} />
-            </View>}
+            {orText && (
+              <View style={[styles.orMain, orLineContainer]}>
+                <View style={orLineView} />
+                <Text style={{paddingHorizontal: paddingHorizontalorText}}>
+                  {orText}
+                </Text>
+                <View style={orLineView} />
+              </View>
+            )}
             {children}
             <View style={styles.footerText}>
-              <Text style={footerTextStyle}>{footerText}</Text>
               <TouchableOpacity onPress={registerPress}>
+              <Text style={footerTextStyle}>{footerText}</Text>
                 <Text style={footerTouchableTextStyle}>
                   {footerTouchableText}
                 </Text>
               </TouchableOpacity>
             </View>
-            {/* <View> */}
-              <TouchableOpacity onPress={forgotPress} style={{alignSelf:'flex-start'}}>
-                <Text style={forgotStyle}>{forgotLabel}</Text>
-              </TouchableOpacity>
-            {/* </View> */}
+            <TouchableOpacity
+              onPress={forgotPress}
+              style={{alignSelf: 'center'}}>
+              <Text style={forgotStyle}>{forgotLabel}</Text>
+            </TouchableOpacity>
           </>
         }
       />
