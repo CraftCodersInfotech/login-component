@@ -167,13 +167,13 @@ const Login = (props: ILoginProps) => {
               activeBackgroundColor={activeBackgroundColor}
               onPress={handleSubmit(submit)}
             />
-            <View style={[styles.orMain, {opacity}]}>
+            {orText && <View style={[styles.orMain, {opacity}]}>
               <View style={orLineView} />
               <Text style={{paddingHorizontal: paddingHorizontalorText}}>
                 {orText}{' '}
               </Text>
               <View style={orLineView} />
-            </View>
+            </View>}
             <View style={styles.footerText}>
               <Text style={footerTextStyle}>{footerText}</Text>
               <TouchableOpacity onPress={registerPress}>
