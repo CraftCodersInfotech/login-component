@@ -42,11 +42,12 @@ export interface ILoginProps {
   buttonContainer?: StyleProp<ViewStyle>;
   buttonText?: string;
   buttonTextStyle?: StyleProp<TextStyle>;
+  onLoginPress?:any;
   backgroundColor?: string;
   activeBackgroundColor?: string;
   orText?: string;
   orLineView?: StyleProp<ViewStyle>;
-  opacity?: number;
+  orLineContainer?: StyleProp<ViewStyle>;
   paddingHorizontalorText?: number;
   footerText?: string;
   footerTextStyle?: StyleProp<TextStyle>;
@@ -92,11 +93,12 @@ const Login = (props: ILoginProps) => {
     buttonContainer, // prop to style the "login" button
     buttonText, // Add text in-place of "login"
     buttonTextStyle, // add text in place of "login"
+    onLoginPress,//onpress for button
     backgroundColor, //inactive color of "login" button
     activeBackgroundColor, //active color of "login" button
     orText, //add text in-place of "or"
     orLineView, //prop to give style to line "or"
-    opacity, //to give opacity to "or" view
+    orLineContainer, //To give style to orLine container
     paddingHorizontalorText, //to leave space between "or"
     footerText, // add text in-place of "Don't have an account? "
     footerTextStyle, //prop to give style to  "Don't have an account?"
@@ -117,7 +119,8 @@ const Login = (props: ILoginProps) => {
     mode: 'all',
     resolver: yupResolver(schema),
   });
-  const submit = () => {
+  const submit = (data) => {
+    onLoginPress(data)
     console.log('data:: ', data);
   };
 
@@ -167,10 +170,10 @@ const Login = (props: ILoginProps) => {
               activeBackgroundColor={activeBackgroundColor}
               onPress={handleSubmit(submit)}
             />
-            {orText && <View style={[styles.orMain, {opacity}]}>
+            {orText && <View style={[styles.orMain, orLineContainer]}>
               <View style={orLineView} />
               <Text style={{paddingHorizontal: paddingHorizontalorText}}>
-                {orText}{' '}
+                {orText}
               </Text>
               <View style={orLineView} />
             </View>}

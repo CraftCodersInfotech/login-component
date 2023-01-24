@@ -37,11 +37,12 @@ Make sure to install pod into react-native Project after linking given command
 | buttonContainer | StyleProp<ViewStyle> | Prop to style the "login" button |
 | buttonText | StyleProp<ViewStyle> | Prop to style the "login" button |
 | buttonTextStyle | string | Add text in-place of "login" |
+| onLoginPress | any | onpress for button |
 | backgroundColor | string | Inactive color of "login" button |
 | activeBackgroundColor | string | Active color of "login" button |
 | orText | string | Add text in-place of "or" |
 | orLineView | StyleProp<ViewStyle> | Prop to give style to line "or" |
-| opacity | number | To give opacity to "or" view |
+| orLineContainer | StyleProp<ViewStyle> | To give style to orLine container|
 | paddingHorizontalorText | number | To leave space between "or" |
 | footerText | string | Add text in-place of "Don't have an account? " |
 | footerTextStyle | StyleProp<TextStyle> | Prop to give style to  "Don't have an account?" |
