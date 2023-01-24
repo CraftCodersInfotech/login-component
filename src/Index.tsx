@@ -198,14 +198,14 @@ const Login = (props: ILoginProps) => {
               </View>
             )}
             {children}
-            <View style={styles.footerText}>
-              <TouchableOpacity onPress={registerPress}>
+            {/* <View style={styles.footerText}> */}
+              <TouchableOpacity style={styles.footerText} onPress={registerPress}>
               <Text style={footerTextStyle}>{footerText}</Text>
                 <Text style={footerTouchableTextStyle}>
                   {footerTouchableText}
                 </Text>
               </TouchableOpacity>
-            </View>
+            {/* </View> */}
             <TouchableOpacity
               onPress={forgotPress}
               style={{alignSelf: 'center'}}>
