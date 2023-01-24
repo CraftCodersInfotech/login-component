@@ -1,6 +1,6 @@
 # react-native-login
 
-login a great way to verifiy the user with their e-mail address or phone number. Login page can contain images, buttons, text and more. Login page is mainly used for let the user enter in the app with verification.
+login a great way to verifiy the user with their e-mail address or phone number and password. Login page can contain images, buttons, text and more. Login page is mainly used for let the user enter in the app with verification.
 
 ## Table of Content
 
