@@ -11,7 +11,7 @@ import {
   ImageStyle,
   TextStyle,
 } from 'react-native';
-import React, {useContext, useState} from 'react';
+import React, { useContext, useState} from 'react';
 import {styles} from './Style';
 import InputField from 'react-native-input-field';
 import Button from 'react-native-button';
@@ -57,6 +57,7 @@ export interface ILoginProps {
   forgotLabel?: string;
   forgotStyle?: StyleProp<TextStyle>;
   forgotPress?: () => void;
+  children?:React.ReactNode;
 }
 
 const Login = (props: ILoginProps) => {
@@ -108,6 +109,7 @@ const Login = (props: ILoginProps) => {
     forgotLabel, // add text for "forgot password?"
     forgotStyle, // prop to style the text "forgot password?"
     forgotPress, //onPress for "Forget password" text
+    children, //User can add view or text
   } = props;
   const {registerUser, userData} = useContext(LoginContext);
   const {
@@ -177,6 +179,7 @@ const Login = (props: ILoginProps) => {
               </Text>
               <View style={orLineView} />
             </View>}
+            {children}
             <View style={styles.footerText}>
               <Text style={footerTextStyle}>{footerText}</Text>
               <TouchableOpacity onPress={registerPress}>
@@ -185,11 +188,11 @@ const Login = (props: ILoginProps) => {
                 </Text>
               </TouchableOpacity>
             </View>
-            <View>
-              <TouchableOpacity onPress={forgotPress}>
+            {/* <View> */}
+              <TouchableOpacity onPress={forgotPress} style={{alignSelf:'flex-start'}}>
                 <Text style={forgotStyle}>{forgotLabel}</Text>
               </TouchableOpacity>
-            </View>
+            {/* </View> */}
           </>
         }
       />

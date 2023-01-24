@@ -52,6 +52,7 @@ Make sure to install pod into react-native Project after linking given command
 | forgotLabel | string | Add text for "forgot password?" |
 | forgotStyle | StyleProp<TextStyle> | Prop to style the text "forgot password?" |
 | forgotPress | () => void | onPress for "Forget password" text |
+| children | ReactNode| User can add view or text |
 
 ![Screenshot 2022-12-06 at 5 33 52 PM](https://user-images.githubusercontent.com/24438876/205907066-d81db9cf-73fb-4621-a294-64bcdc71c6ee.png)
 ![Screenshot 2022-12-06 at 5 34 29 PM](https://user-images.githubusercontent.com/24438876/205907330-69b1023d-508e-43cd-b6f6-b7ae2251ccfb.png)
