@@ -28,9 +28,9 @@ interface InputData {
   keyboardType?: KeyboardType | undefined;
   showIcon?: boolean;
   showLogo?: boolean;
-  image: ImageSourcePropType;
-  showPasswordIcon: ImageSourcePropType;
-  hidePasswordIcon: ImageSourcePropType;
+  image?: ImageSourcePropType;
+  showPasswordIcon?: ImageSourcePropType;
+  hidePasswordIcon?: ImageSourcePropType;
 }
 
 export interface ILoginProps {
