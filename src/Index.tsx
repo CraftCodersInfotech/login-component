@@ -28,7 +28,9 @@ interface InputData {
   keyboardType?: KeyboardType | undefined;
   showIcon?: boolean;
   showLogo?: boolean;
-  image?: ImageSourcePropType;
+  image: ImageSourcePropType;
+  showPasswordIcon: ImageSourcePropType;
+  hidePasswordIcon: ImageSourcePropType;
 }
 
 export interface ILoginProps {
@@ -162,6 +164,8 @@ const Login = (props: ILoginProps) => {
               iconStyle={iconStyle}
               showLogo={item.showLogo}
               source={item.image}
+              showPasswordIcon={item.showPasswordIcon}
+              hidePasswordIcon={item.hidePasswordIcon}
               showIcon={item.showIcon}
               name={item.name}
               control={control}
