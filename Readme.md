@@ -20,7 +20,19 @@ npm install react-native-login
 Make sure to install pod into react-native Project after linking given command
 
 ## API reference
-
+### data
+| Name | Type   | Why to add  |
+| ---- | -----  |-------------------- |
+| name |string  | To let the data verify with "yup"|
+| Label | string  |To add the title upon the input-field|
+| placeholder | string|To add the placeholder in input-field |
+| inputType | string|-------------------- |
+| keyboardType | KeyboardType  |"default", "number-pad", "decimal-pad", "numeric", "email-address", "phone-pad""url"|
+| showIcon | boolean|Add to show the password image |
+| showLogo |boolean|Add to show the placeholder image |
+| image | ImageSourcePropType|To add image as placeholder |
+| showPasswordIcon | ImageSourcePropType|To add image for show password |
+| hidePasswordIcon | ImageSourcePropType|To add image for hide password |
 ### Login
 
 | Name | Type  | Description          |
@@ -41,6 +53,7 @@ Make sure to install pod into react-native Project after linking given command
 | backgroundColor | string | Inactive color of "login" button |
 | activeBackgroundColor | string | Active color of "login" button |
 | orText | string | Add text in-place of "or" |
+| orTextStyle | StyleProp<TextStyle> | Prop to style the "or" text ||||||||||||||||||||||||||||||||
 | orLineView | StyleProp<ViewStyle> | Prop to give style to line "or" |
 | orLineContainer | StyleProp<ViewStyle> | To give style to orLine container|
 | paddingHorizontalorText | number | To leave space between "or" |
@@ -53,6 +66,11 @@ Make sure to install pod into react-native Project after linking given command
 | forgotStyle | StyleProp<TextStyle> | Prop to style the text "forgot password?" |
 | forgotPress | () => void | onPress for "Forget password" text |
 | children | ReactNode| User can add view or text |
+| iconStyle | StyleProp<ImageStyle>| Prop to give style to image in-front of input-field  |
+| passwordIconStyle | StyleProp<ImageStyle>| Prop to give style to password image |
+| placeholderTextColor | string| To change the color of placeholder |
+| bounces | boolean| To let the screen bounce or not |
+| inputStyle | StyleProp<ViewStyle>| prop to give style to inner part of input field |
 
 ![Screenshot 2022-12-06 at 5 33 52 PM](https://user-images.githubusercontent.com/24438876/205907066-d81db9cf-73fb-4621-a294-64bcdc71c6ee.png)
 ![Screenshot 2022-12-06 at 5 34 29 PM](https://user-images.githubusercontent.com/24438876/205907330-69b1023d-508e-43cd-b6f6-b7ae2251ccfb.png)
