@@ -48,6 +48,7 @@ export interface ILoginProps {
   backgroundColor?: string;
   activeBackgroundColor?: string;
   orText?: string;
+  orTextStyle?: StyleProp<TextStyle>;
   orLineView?: StyleProp<ViewStyle>;
   orLineContainer?: StyleProp<ViewStyle>;
   paddingHorizontalorText?: number;
@@ -63,7 +64,8 @@ export interface ILoginProps {
   iconStyle?: StyleProp<ImageStyle>;
   passwordIconStyle?: StyleProp<ImageStyle>;
   placeholderTextColor?: string;
-  scrollEnabled?:boolean
+  bounces?: boolean;
+  inputStyle?: StyleProp<ViewStyle>;
 }
 
 const Login = (props: ILoginProps) => {
@@ -72,7 +74,7 @@ const Login = (props: ILoginProps) => {
       .string()
       .email('Please enter valid email')
       .required('Email Address is Required'),
-    mobilenumber: yup.string().required().min(10),
+    // mobilenumber: yup.string().required().min(10),
     password: yup
       .string()
       .required()
@@ -104,6 +106,7 @@ const Login = (props: ILoginProps) => {
     backgroundColor, //inactive color of "login" button
     activeBackgroundColor, //active color of "login" button
     orText, //add text in-place of "or"
+    orTextStyle,
     orLineView, //prop to give style to line "or"
     orLineContainer, //To give style to orLine container
     paddingHorizontalorText, //to leave space between "or"
@@ -119,7 +122,8 @@ const Login = (props: ILoginProps) => {
     iconStyle,
     passwordIconStyle,
     placeholderTextColor,
-    scrollEnabled,
+    bounces,
+    inputStyle,
   } = props;
   const {registerUser, userData} = useContext(LoginContext);
   const {
@@ -133,12 +137,12 @@ const Login = (props: ILoginProps) => {
   });
   const submit = (data: any) => {
     onLoginPress(data);
-    console.log('data:: ', data);
+    // console.log('data:: ', data);
   };
 
   const data = {
     email: getValues('email'),
-    mobilenumber: getValues('mobilenumber'),
+    // mobilenumber: getValues('mobilenumber'),
     password: getValues('password'),
   };
 
@@ -148,7 +152,7 @@ const Login = (props: ILoginProps) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         data={props.data}
-        scrollEnabled={scrollEnabled}
+        bounces={bounces}
         renderItem={({item}) => (
           <View>
             {ShowLabel && <Text style={inputLabelStyle}>{item.Label}</Text>}
@@ -165,9 +169,7 @@ const Login = (props: ILoginProps) => {
               placeholder={item.placeholder}
               maxLength={maxLength}
               keyboardType={item.keyboardType}
-              inputStyle={{
-                width: item.showIcon ? '80%' : '100%',
-              }}
+              inputStyle={inputStyle}
               errors={errors}
             />
           </View>
@@ -191,21 +193,23 @@ const Login = (props: ILoginProps) => {
             {orText && (
               <View style={[styles.orMain, orLineContainer]}>
                 <View style={orLineView} />
-                <Text style={{paddingHorizontal: paddingHorizontalorText}}>
+                <Text
+                  style={[
+                    {paddingHorizontal: paddingHorizontalorText},
+                    orTextStyle,
+                  ]}>
                   {orText}
                 </Text>
                 <View style={orLineView} />
               </View>
             )}
             {children}
-            {/* <View style={styles.footerText}> */}
-              <TouchableOpacity style={styles.footerText} onPress={registerPress}>
+            <TouchableOpacity style={styles.footerText} onPress={registerPress}>
               <Text style={footerTextStyle}>{footerText}</Text>
-                <Text style={footerTouchableTextStyle}>
-                  {footerTouchableText}
-                </Text>
-              </TouchableOpacity>
-            {/* </View> */}
+              <Text style={footerTouchableTextStyle}>
+                {footerTouchableText}
+              </Text>
+            </TouchableOpacity>
             <TouchableOpacity
               onPress={forgotPress}
               style={{alignSelf: 'center'}}>
