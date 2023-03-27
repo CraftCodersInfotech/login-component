@@ -68,30 +68,31 @@ export interface ILoginProps {
   placeholderTextColor?: string;
   bounces?: boolean;
   inputStyle?: StyleProp<ViewStyle>;
+  schema?:any
 }
 
 const Login = (props: ILoginProps) => {
-  let schema = yup.object().shape({
-    email: yup
-      .string()
-      .email('Please enter valid email')
-      .required('Email Address is Required'),
-    // mobilenumber: yup.string().required().min(10),
-    password: yup
-      .string()
-      .required()
-      .test(
-        'regex',
-        'Password must be min 8 characters, and have 1 Special Character, 1 Uppercase, 1 Number and 1 Lowercase',
-        (val: any) => {
-          let regExp = new RegExp(
-            '^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$',
-          );
-          // console.log(regExp.test(val), regExp, val);
-          return regExp.test(val);
-        },
-      ),
-  });
+//   let schema = yup.object().shape({
+//     email: yup
+//       .string()
+//       .email('Please enter valid email')
+//       .required('Email Address is Required'),
+//     // mobilenumber: yup.string().required().min(10),
+//     password: yup
+//       .string()
+//       .required()
+//       .test(
+//         'regex',
+//         'Password must be min 8 characters, and have 1 Special Character, 1 Uppercase, 1 Number and 1 Lowercase',
+//         (val: any) => {
+//           let regExp = new RegExp(
+//             '^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$',
+//           );
+//           // console.log(regExp.test(val), regExp, val);
+//           return regExp.test(val);
+//         },
+//       ),
+//   });
   const {
     source, // path of image
     imageStyle, // prop to give style to image
@@ -126,6 +127,7 @@ const Login = (props: ILoginProps) => {
     placeholderTextColor,
     bounces,
     inputStyle,
+    schema
   } = props;
   const {registerUser, userData} = useContext(LoginContext);
   const {
