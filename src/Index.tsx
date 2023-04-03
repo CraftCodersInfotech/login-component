@@ -10,15 +10,15 @@ import {
   ViewStyle,
   ImageStyle,
   TextStyle,
-} from 'react-native';
-import React, {useContext, useState} from 'react';
-import {styles} from './Style';
-import InputField from 'react-native-input-field';
-import Button from 'react-native-button';
-import * as yup from 'yup';
-import {useForm} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
-import {LoginContext} from './Context';
+} from "react-native";
+import React, { useContext, useState } from "react";
+import { styles } from "./Style";
+import InputField from "react-native-input-field";
+import Button from "react-native-button";
+import * as yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { LoginContext } from "./Context";
 
 interface InputData {
   name: string;
@@ -68,31 +68,33 @@ export interface ILoginProps {
   placeholderTextColor?: string;
   bounces?: boolean;
   inputStyle?: StyleProp<ViewStyle>;
-  schema?:any
+  schema?: any;
+  borderColor?: string;
+  errorBorderColor?: string;
 }
 
 const Login = (props: ILoginProps) => {
-//   let schema = yup.object().shape({
-//     email: yup
-//       .string()
-//       .email('Please enter valid email')
-//       .required('Email Address is Required'),
-//     // mobilenumber: yup.string().required().min(10),
-//     password: yup
-//       .string()
-//       .required()
-//       .test(
-//         'regex',
-//         'Password must be min 8 characters, and have 1 Special Character, 1 Uppercase, 1 Number and 1 Lowercase',
-//         (val: any) => {
-//           let regExp = new RegExp(
-//             '^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$',
-//           );
-//           // console.log(regExp.test(val), regExp, val);
-//           return regExp.test(val);
-//         },
-//       ),
-//   });
+  //   let schema = yup.object().shape({
+  //     email: yup
+  //       .string()
+  //       .email('Please enter valid email')
+  //       .required('Email Address is Required'),
+  //     // mobilenumber: yup.string().required().min(10),
+  //     password: yup
+  //       .string()
+  //       .required()
+  //       .test(
+  //         'regex',
+  //         'Password must be min 8 characters, and have 1 Special Character, 1 Uppercase, 1 Number and 1 Lowercase',
+  //         (val: any) => {
+  //           let regExp = new RegExp(
+  //             '^(?=.*\\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$',
+  //           );
+  //           // console.log(regExp.test(val), regExp, val);
+  //           return regExp.test(val);
+  //         },
+  //       ),
+  //   });
   const {
     source, // path of image
     imageStyle, // prop to give style to image
@@ -127,16 +129,18 @@ const Login = (props: ILoginProps) => {
     placeholderTextColor,
     bounces,
     inputStyle,
-    schema
+    schema,
+    borderColor,
+    errorBorderColor,
   } = props;
-  const {registerUser, userData} = useContext(LoginContext);
+  const { registerUser, userData } = useContext(LoginContext);
   const {
     control,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
     getValues,
   } = useForm({
-    mode: 'all',
+    mode: "all",
     resolver: yupResolver(schema),
   });
   const submit = (data: any) => {
@@ -145,9 +149,9 @@ const Login = (props: ILoginProps) => {
   };
 
   const data = {
-    email: getValues('email'),
+    email: getValues("email"),
     // mobilenumber: getValues('mobilenumber'),
-    password: getValues('password'),
+    password: getValues("password"),
   };
 
   const [res, setRes] = useState(data);
@@ -157,7 +161,7 @@ const Login = (props: ILoginProps) => {
         showsVerticalScrollIndicator={false}
         data={props.data}
         bounces={bounces}
-        renderItem={({item}) => (
+        renderItem={({ item }) => (
           <View>
             {ShowLabel && <Text style={inputLabelStyle}>{item.Label}</Text>}
             <InputField
@@ -171,7 +175,14 @@ const Login = (props: ILoginProps) => {
               showIcon={item.showIcon}
               name={item.name}
               control={control}
-              containerStyle={inputContainer}
+              containerStyle={[
+                inputContainer,
+                {
+                  borderColor: errors[item.name]?.message
+                    ? errorBorderColor
+                    : borderColor,
+                },
+              ]}
               placeholder={item.placeholder}
               maxLength={maxLength}
               keyboardType={item.keyboardType}
@@ -201,9 +212,10 @@ const Login = (props: ILoginProps) => {
                 <View style={orLineView} />
                 <Text
                   style={[
-                    {paddingHorizontal: paddingHorizontalorText},
+                    { paddingHorizontal: paddingHorizontalorText },
                     orTextStyle,
-                  ]}>
+                  ]}
+                >
                   {orText}
                 </Text>
                 <View style={orLineView} />
@@ -218,7 +230,8 @@ const Login = (props: ILoginProps) => {
             </TouchableOpacity>
             <TouchableOpacity
               onPress={forgotPress}
-              style={{alignSelf: 'center'}}>
+              style={{ alignSelf: "center" }}
+            >
               <Text style={forgotStyle}>{forgotLabel}</Text>
             </TouchableOpacity>
           </>
